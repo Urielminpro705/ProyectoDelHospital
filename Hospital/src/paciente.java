@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class paciente {
     private String nombre;
     private String curp;
@@ -36,6 +38,9 @@ public class paciente {
     public  paciente(){}
 
     public void calcularPrioridad(){
-        
+        Scanner lector = new Scanner(System.in);
+        System.out.println("¿El paciente está conciente?");
+        System.out.println("1) Si");
+        System.out.println("2) No");
     }
 }
