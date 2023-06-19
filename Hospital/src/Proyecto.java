@@ -9,40 +9,67 @@ Proyecto final de java
 //Código
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
+
 public class Proyecto {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         // Se usa un comparator para establecer la logica del PriorityQueue
         Comparator<paciente> logica = new Comparator<paciente>() {
             @Override
-            // Se hace de esta manera para que se ordene de mayor a menor
             public int compare(paciente pac1, paciente pac2) {
-                if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) > 0) {
-                    return -1; // pac1 tiene mayor prioridad que pac2
-                } else if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) < 0) {
-                    return 1; // pac1 tiene menor prioridad que pac2
+                if (pac1.getPrioridad() == 0 && pac2.getPrioridad() == 0) {
+                    // Ambos tienen prioridad 0, se preserva el orden de llegada
+                    return 0;
+                } else if (pac1.getPrioridad() == 0) {
+                    // pac1 tiene prioridad 0, se coloca después de pac2
+                    return 1;
+                } else if (pac2.getPrioridad() == 0) {
+                    // pac2 tiene prioridad 0, se coloca antes de pac1
+                    return -1;
                 } else {
-                    return 0; // pac1 y pac2 tienen la misma prioridad
+                    // Ambos tienen prioridad distinta de 0, se ordenan por prioridad
+                    if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) > 0) {
+                        return -1; // pac1 tiene mayor prioridad que pac2
+                    } else if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) < 0) {
+                        return 1; // pac1 tiene menor prioridad que pac2
+                    } else {
+                        return 0; // pac1 y pac2 tienen la misma prioridad distinta de 0
+                    }
                 }
             }
         };
-        PriorityQueue<paciente> cola = new PriorityQueue<>(logica); // Se crea la cola de prioridad con objetos de tipo paciente
+        
+        PriorityQueue<paciente> colaPrioridad = new PriorityQueue<>(logica);
+        Queue<paciente> cola = new LinkedList<>();
         int opcion; // Se declara la variable opcion
         do{ // Ciclo que sirve para repetir el programa hasta que se escoga la opcion 4
             opcion = menuPrincipal(); // Se llama la funcion menuPrincipal() en la variable opcion
             switch(opcion){ // Se hace un switch con la variable opcion
                 case 1:
-                    cola.offer(menuSecundario()); // Se llama a la funcion menuSecundario() y se inserta en la cola
+                    paciente aux = menuSecundario();
+                    if(aux.getPrioridad() == 0){
+                        cola.add(aux);
+                    }
+                    else{
+                        colaPrioridad.add(aux);
+                    }
                 break;
 
                 case 2:
-                    cola.poll(); // Se saca un objeto de la cola
+                    if(colaPrioridad.isEmpty() == false){
+                        colaPrioridad.poll();
+                    } else {
+                        cola.poll();
+                    }
+                    
                 break;
 
                 case 3:
-                    imprimir(cola); // Se llama a la funcion imprimir()
+                    imprimir(colaPrioridad, cola); // Se llama a la funcion imprimir()
                 break;
 
                 case 4:
@@ -91,9 +118,17 @@ public class Proyecto {
     }
 
     // Funcion para imprimir los pacientes
-    public static void imprimir(PriorityQueue<paciente> cola) {
+    public static void imprimir(PriorityQueue<paciente> cola1, Queue<paciente> cola2) {
         System.out.println("\n---------------------------");
-        for(paciente act : cola){
+        for(paciente act : cola1){
+            System.out.println("Nombre: " + act.getNombre());
+            System.out.println("CURP: " + act.getCurp());
+            System.out.println("Edad: " + act.getEdad());
+            System.out.println("Sangre: " + act.getTipoSangre());
+            System.out.println("Sintomas: " + act.getSintomas());
+            System.out.println("Prioridad: " + act.getPrioridad() + "\n");
+        }
+        for(paciente act : cola2){
             System.out.println("Nombre: " + act.getNombre());
             System.out.println("CURP: " + act.getCurp());
             System.out.println("Edad: " + act.getEdad());
