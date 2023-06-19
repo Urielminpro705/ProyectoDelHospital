@@ -16,16 +16,33 @@ public class Proyecto {
                 }
             }
         };
-
-
         PriorityQueue<paciente> cola = new PriorityQueue<>(logica);
         int opcion;
-        opcion = menuPrincipal();
-        switch(opcion){
-            case 1:
-                cola.offer(menuSecundario());
-            break;
-        }
+        do{
+            opcion = menuPrincipal();
+            switch(opcion){
+                case 1:
+                    cola.offer(menuSecundario());
+                break;
+
+                case 2:
+                    cola.poll();
+                break;
+
+                case 3:
+                    imprimir(cola);
+                break;
+
+                case 4:
+                    System.out.println("Adios");
+                break;
+
+                default:
+                    System.out.println("Opcion no valida");
+                break;
+            }
+        }while(opcion != 4);
+        
     }
 
     public static int menuPrincipal() {
@@ -51,5 +68,13 @@ public class Proyecto {
         nuevo.setEdad(lector.nextInt());
         nuevo.calcularPrioridad();
         return nuevo;
+    }
+
+    public static void imprimir(PriorityQueue<paciente> cola) {
+        for(paciente act : cola){
+            System.out.println("Nombre: " + act.getNombre());
+            System.out.println("CURP: " + act.getCurp());
+            System.out.println("Edad: " + act.getEdad());
+        }
     }
 }
