@@ -5,7 +5,7 @@ public class paciente {
     private String curp;
     private int edad;
     private String sintomas;
-    private int prioridad;
+    public Integer prioridad;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

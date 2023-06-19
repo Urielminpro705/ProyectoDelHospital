@@ -1,8 +1,31 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 public class Proyecto {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
+        Comparator<paciente> logica = new Comparator<paciente>() {
+            @Override
+            public int compare(paciente pac1, paciente pac2) {
+                if (pac1.prioridad.compareTo(pac2.prioridad) > 0) {
+                    return -1; // pac1 tiene mayor prioridad que pac2
+                } else if (pac1.prioridad.compareTo(pac2.prioridad) < 0) {
+                    return 1; // pac1 tiene menor prioridad que pac2
+                } else {
+                    return 0; // pac1 y pac2 tienen la misma prioridad
+                }
+            }
+        };
+
+
+        PriorityQueue<paciente> cola = new PriorityQueue<>(logica);
+        int opcion;
+        opcion = menuPrincipal();
+        switch(opcion){
+            case 1:
+                cola.offer(menuSecundario());
+            break;
+        }
     }
 
     public static int menuPrincipal() {
@@ -17,9 +40,8 @@ public class Proyecto {
         return opcion;
     }
 
-    public static int menuSecundario() {
+    public static paciente menuSecundario() {
         Scanner lector = new Scanner(System.in);
-        int opcion;
         paciente nuevo = new paciente();
         System.out.println("Ingresa el nombre");
         nuevo.setNombre(lector.nextLine());
@@ -27,7 +49,7 @@ public class Proyecto {
         nuevo.setCurp(lector.nextLine());
         System.out.println("Ingresa la edad");
         nuevo.setEdad(lector.nextInt());
-        opcion = lector.nextInt();
-        return opcion;
+        nuevo.calcularPrioridad();
+        return nuevo;
     }
 }
