@@ -39,8 +39,34 @@ public class paciente {
 
     public void calcularPrioridad(){
         Scanner lector = new Scanner(System.in);
+        int opcion;
         System.out.println("¿El paciente está conciente?");
         System.out.println("1) Si");
         System.out.println("2) No");
+        opcion = lector.nextInt();
+        if(opcion == 1){
+            System.out.println("¿Tiene hemorragia?");
+            System.out.println("1) Si");
+            System.out.println("2) No");
+            opcion = lector.nextInt();
+            if(opcion == 1){
+                System.out.println("¿Pierde demasiada sangre?");
+                System.out.println("1) Si");
+                System.out.println("2) No");
+            }
+        }
+        else 
+        {
+
+        } 
     }
+    
+    /* 
+    public void calcularPrioridad(){
+        Scanner lector = new Scanner(System.in);
+        int opcion;
+        System.out.println("Escoge ");
+    }
+    */
+    
 }
