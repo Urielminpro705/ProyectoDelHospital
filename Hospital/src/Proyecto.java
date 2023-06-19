@@ -60,22 +60,26 @@ public class Proyecto {
     public static paciente menuSecundario() {
         Scanner lector = new Scanner(System.in);
         paciente nuevo = new paciente();
-        System.out.println("Ingresa el nombre");
+        System.out.println("\nIngresa el nombre");
         nuevo.setNombre(lector.nextLine());
         System.out.println("Ingresa la curp");
         nuevo.setCurp(lector.nextLine());
         System.out.println("Ingresa la edad");
         nuevo.setEdad(lector.nextInt());
+        System.out.print("\n");
         nuevo.calcularPrioridad();
+        System.out.print("\n");
         return nuevo;
     }
 
     public static void imprimir(PriorityQueue<paciente> cola) {
+        System.out.println("\n---------------------------");
         for(paciente act : cola){
-            System.out.println("\nNombre: " + act.getNombre());
+            System.out.println("Nombre: " + act.getNombre());
             System.out.println("CURP: " + act.getCurp());
             System.out.println("Edad: " + act.getEdad());
-            System.out.println("Prioridad: " + act.prioridad);
+            System.out.println("Prioridad: " + act.prioridad + "\n");
         }
+        System.out.println("---------------------------\n");
     }
 }
