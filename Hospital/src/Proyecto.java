@@ -1,3 +1,13 @@
+/*
+Universidad De La Salle Bajío
+Ingenieria en software y sistemas computacionales
+Programacion Estructurada y Orientada a Objetos
+Uriel Mata Castellanos 76907
+Proyecto final de java
+*/
+
+//Código
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
