@@ -72,9 +72,10 @@ public class Proyecto {
 
     public static void imprimir(PriorityQueue<paciente> cola) {
         for(paciente act : cola){
-            System.out.println("Nombre: " + act.getNombre());
+            System.out.println("\nNombre: " + act.getNombre());
             System.out.println("CURP: " + act.getCurp());
             System.out.println("Edad: " + act.getEdad());
+            System.out.println("Prioridad: " + act.prioridad);
         }
     }
 }

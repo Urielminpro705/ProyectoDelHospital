@@ -43,8 +43,11 @@ public class paciente {
         if(edad >= 0 && edad <=5){
             prioridad = 1;
         } else{
-            if(edad > 60) {
+            if(edad >= 60) {
                 prioridad = 2;
+            }
+            else{
+                prioridad = 0;
             }
         }
         do{
