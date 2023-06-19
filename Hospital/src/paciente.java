@@ -173,7 +173,7 @@ public class paciente {
     
     public void sintomas(){
         Scanner lector = new Scanner(System.in);
-        String opcion;
+        String opcion, personalizados;
         System.out.println("--Escoge los sintomas--");
         System.out.println("1) Dolor de cabeza");
         System.out.println("2) Fiebre");
@@ -182,7 +182,7 @@ public class paciente {
         System.out.println("5) Vomito");
         System.out.println("6) Diarrea");
         System.out.println("7) Dolor de garganta");
-        System.out.println("8) Ninguno de estos");
+        System.out.println("8) Agregar algunos");
         opcion = lector.nextLine();
         String[] sintomas2 = new String[7];
         sintomas2[0] = "Dolor de cabeza";
@@ -218,6 +218,11 @@ public class paciente {
                 if(letras[i] == '7'){
                     sintomas = sintomas2[6]; 
                 }
+                if(letras[i] == '8'){
+                    System.out.println("Ingrese sus sintomas");
+                    personalizados = lector.nextLine();
+                    sintomas = sintomas + personalizados;
+                }
             } else {
                 if(letras[i] == '1'){
                 sintomas = sintomas + ", " + sintomas2[0]; 
@@ -239,6 +244,11 @@ public class paciente {
                 }
                 if(letras[i] == '7'){
                     sintomas = sintomas + ", " + sintomas2[6]; 
+                }
+                if(letras[i] == '8'){
+                    System.out.println("Ingrese sus sintomas");
+                    personalizados = lector.nextLine();
+                    sintomas = sintomas + ". " + personalizados;
                 }
             }
         }
