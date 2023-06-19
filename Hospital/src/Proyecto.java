@@ -7,9 +7,9 @@ public class Proyecto {
         Comparator<paciente> logica = new Comparator<paciente>() {
             @Override
             public int compare(paciente pac1, paciente pac2) {
-                if (pac1.prioridad.compareTo(pac2.prioridad) > 0) {
+                if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) > 0) {
                     return -1; // pac1 tiene mayor prioridad que pac2
-                } else if (pac1.prioridad.compareTo(pac2.prioridad) < 0) {
+                } else if (pac1.getPrioridad().compareTo(pac2.getPrioridad()) < 0) {
                     return 1; // pac1 tiene menor prioridad que pac2
                 } else {
                     return 0; // pac1 y pac2 tienen la misma prioridad
@@ -67,9 +67,11 @@ public class Proyecto {
         System.out.println("Ingresa la edad");
         nuevo.setEdad(lector.nextInt());
         System.out.println("Ingresa el tipo de sangre");
-        nuevo.setTipoSangre(lector.nextLine());
+        nuevo.setTipoSangre(lector.next());
         System.out.print("\n");
         nuevo.calcularPrioridad();
+        System.out.print("\n");
+        nuevo.sintomas();
         System.out.print("\n");
         return nuevo;
     }
@@ -81,7 +83,8 @@ public class Proyecto {
             System.out.println("CURP: " + act.getCurp());
             System.out.println("Edad: " + act.getEdad());
             System.out.println("Sangre: " + act.getTipoSangre());
-            System.out.println("Prioridad: " + act.prioridad + "\n");
+            System.out.println("Sintomas: " + act.getSintomas());
+            System.out.println("Prioridad: " + act.getPrioridad() + "\n");
         }
         System.out.println("---------------------------\n");
     }
