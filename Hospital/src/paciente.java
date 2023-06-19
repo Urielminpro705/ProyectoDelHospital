@@ -4,6 +4,7 @@ public class paciente {
     private String nombre;
     private String curp;
     private int edad;
+    private String tipoSangre;
     private String sintomas;
     public Integer prioridad;
 
@@ -21,6 +22,14 @@ public class paciente {
 
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public void setTipoSangre(String tipoSangre) {
+        this.tipoSangre = tipoSangre;
+    }
+
+    public String getTipoSangre() {
+        return tipoSangre;
     }
 
     public String getNombre() {
@@ -83,7 +92,7 @@ public class paciente {
                                             prioridad = prioridad + 60;
                                         }
                                         else {
-                                            prioridad = prioridad + 40;
+                                            prioridad = prioridad + 30;
                                         }
                                     }
                                 } while(opcion != 1 && opcion != 2);
@@ -116,7 +125,7 @@ public class paciente {
                                     }
                                     else{
                                         if(opcion == 1){
-                                            prioridad = prioridad + 70;
+                                            prioridad = prioridad + 80;
                                         }
                                         else {
                                             prioridad = prioridad + 55;
@@ -131,14 +140,35 @@ public class paciente {
                 }
             }
         }while(opcion != 1 && opcion != 2);
+
+        do{
+            System.out.println("¿Tiene fracturas?");
+            System.out.println("1) Si");
+            System.out.println("2) No");
+            opcion = lector.nextInt();
+            if(opcion == 1){
+                do{
+                    System.out.println("¿Es en alguna zona vital?");
+                    System.out.println("1) Si");
+                    System.out.println("2) No");
+                    opcion = lector.nextInt();
+                    if(opcion == 1){
+                        prioridad = prioridad + 6;
+                    }
+                    else{
+                        prioridad = prioridad + 3;
+                    }
+                }while(opcion != 1 && opcion != 2);            
+            }
+        }while(opcion != 1 && opcion != 2);    
     }
     
-    /* 
-    public void calcularPrioridad(){
+    public void sintomas(){
         Scanner lector = new Scanner(System.in);
         int opcion;
-        System.out.println("Escoge ");
+        System.out.println("--Escoge los sintomas--");
+        System.out.println("1) Dolor de cabeza");
+        System.out.println("2) Fiebre");
+        System.out.println("3) ");
     }
-    */
-    
 }

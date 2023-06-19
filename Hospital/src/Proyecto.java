@@ -66,6 +66,8 @@ public class Proyecto {
         nuevo.setCurp(lector.nextLine());
         System.out.println("Ingresa la edad");
         nuevo.setEdad(lector.nextInt());
+        System.out.println("Ingresa el tipo de sangre");
+        nuevo.setTipoSangre(lector.nextLine());
         System.out.print("\n");
         nuevo.calcularPrioridad();
         System.out.print("\n");
@@ -78,6 +80,7 @@ public class Proyecto {
             System.out.println("Nombre: " + act.getNombre());
             System.out.println("CURP: " + act.getCurp());
             System.out.println("Edad: " + act.getEdad());
+            System.out.println("Sangre: " + act.getTipoSangre());
             System.out.println("Prioridad: " + act.prioridad + "\n");
         }
         System.out.println("---------------------------\n");
